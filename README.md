@@ -20,7 +20,7 @@ Buka http://127.0.0.1:3000. Tanpa env Supabase, mode demo aktif otomatis. Klik M
 4. Daftar pengguna, konfirmasi email jika diaktifkan. Supabase Auth Site URL untuk pengujian: `http://127.0.0.1:3000`.
 5. Tetapkan admin melalui SQL editor tepercaya: `update public.profiles set role = 'admin' where id = '<UUID pengguna>';` Pengguna tidak dapat menaikkan role lewat aplikasi.
 6. Restart dev server. Login admin untuk upload PDF dan publish materi. Database Supabase tidak diisi materi contoh otomatis.
-7. Isi `VITE_WHATSAPP_NUMBER` dengan nomor Kak Rofi dalam format internasional tanpa tanda tambah. Kosong berarti tombol hanya menampilkan informasi konfigurasi, tidak mengirim pesan. Klik CTA dengan nomor valid membuka WhatsApp berisi draft; pengguna tetap menekan Kirim sendiri.
+7. Isi `VITE_WHATSAPP_NUMBER` dengan nomor Kak Rofi dalam format internasional tanpa tanda tambah. Jika kosong, menggunakan nomor Kak Rofi 6282142179454. Klik CTA dengan nomor valid membuka WhatsApp berisi draft; pengguna tetap menekan Kirim sendiri.
 
 RLS membatasi materi terbit ke pengguna login, progres ke pemilik, dan mutasi materi ke admin. Bucket PDF privat dengan signed URL satu jam. Supabase belum diverifikasi terhadap layanan nyata jika credentials tidak disediakan.
 
@@ -47,3 +47,7 @@ Tes browser memerlukan aplikasi berjalan di port 3000 dan Microsoft Edge terpasa
 ## Hasil verifikasi lokal
 
 Build Vite dan pemeriksaan TypeScript berhasil. Tiga tes Playwright lulus pada Microsoft Edge: alur peserta, alur admin, dan lebar mobile. Pemeriksaan desktop tidak menemukan pageerror; video memiliki readyState 4 dan paused false. Supabase nyata dan pengiriman WhatsApp belum diuji.
+
+## Pelengkapan alur
+
+Halaman jalur menampilkan progres per kategori, filter admin mendukung kategori/status/pencarian, editor memperingatkan perubahan belum disimpan, dan PDF gagal muat menyediakan retry. Nomor WhatsApp Kak Rofi: 6282142179454. Tes WhatsApp memverifikasi URL dan isi draft melalui intersepsi; tidak mengirim pesan. Supabase live tetap memerlukan konfigurasi dan belum diuji.
