@@ -57,3 +57,6 @@ Halaman jalur menampilkan progres per kategori, filter admin mendukung kategori/
 Halaman: `/login`, `/daftar`, `/dashboard`, `/materi`, `/jalur/bmc`, `/jalur/bpc`, `/jalur/essay`, `/belajar/<id>`, `/akun`, dan `/admin`. Refresh mempertahankan halaman; URL yang memerlukan login dikembalikan setelah berhasil masuk. Admin memakai login yang sama dengan mahasiswa. Peran admin ditetapkan di tabel profiles oleh pengelola tepercaya; registrasi tidak memberikan pilihan menaikkan peran. Halaman /akun menampilkan peran saat ini.
 
 Untuk tes demo tanpa mengubah .env.local: set VITE_DEMO_MODE=true pada server tes, dan TEST_BASE_URL sesuai portnya.
+## Verifikasi Supabase nyata — 20 November 2026
+
+Konfirmasi email dimatikan atas persetujuan pemilik: daftar menghasilkan sesi langsung tanpa SMTP. Dua akun uji dibuat melalui Supabase Auth. Pemeriksaan integrasi SDK terhadap proyek nyata lulus: login/logout, upload PDF privat, draft tidak terbaca mahasiswa, publish terbaca, signed URL mengembalikan PDF dengan ukuran byte sesuai, progres slide 2 dan completed tersimpan setelah login baru, upload/edit materi mahasiswa ditolak, penulisan progres akun lain ditolak, serta unpublish menyembunyikan materi. Materi uji dibiarkan sebagai draft. Ini pengujian API/SDK nyata; bukan klaim tes UI live lengkap. Penetapan admin akun pribadi masih menunggu pendaftaran ulang akun pemilik.
