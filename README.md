@@ -51,3 +51,9 @@ Build Vite dan pemeriksaan TypeScript berhasil. Tiga tes Playwright lulus pada M
 ## Pelengkapan alur
 
 Halaman jalur menampilkan progres per kategori, filter admin mendukung kategori/status/pencarian, editor memperingatkan perubahan belum disimpan, dan PDF gagal muat menyediakan retry. Nomor WhatsApp Kak Rofi: 6282142179454. Tes WhatsApp memverifikasi URL dan isi draft melalui intersepsi; tidak mengirim pesan. Supabase live tetap memerlukan konfigurasi dan belum diuji.
+
+## URL dan akun admin
+
+Halaman: `/login`, `/daftar`, `/dashboard`, `/materi`, `/jalur/bmc`, `/jalur/bpc`, `/jalur/essay`, `/belajar/<id>`, `/akun`, dan `/admin`. Refresh mempertahankan halaman; URL yang memerlukan login dikembalikan setelah berhasil masuk. Admin memakai login yang sama dengan mahasiswa. Peran admin ditetapkan di tabel profiles oleh pengelola tepercaya; registrasi tidak memberikan pilihan menaikkan peran. Halaman /akun menampilkan peran saat ini.
+
+Untuk tes demo tanpa mengubah .env.local: set VITE_DEMO_MODE=true pada server tes, dan TEST_BASE_URL sesuai portnya.

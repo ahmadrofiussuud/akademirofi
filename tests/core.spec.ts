@@ -7,7 +7,7 @@ test('register, learn, resume, logout, login and isolate progress',async({page})
  await page.getByRole('button',{name:'Mulai belajar',exact:true}).click();await expect(page.getByTitle(/Materi Kenalan/)).toBeVisible();await page.getByRole('button',{name:'Next',exact:true}).click();await expect(page.getByText('Slide 2 / 3',{exact:true})).toBeVisible();
  await page.getByRole('button',{name:'Tandai selesai'}).click();await expect(page.getByRole('button',{name:'Lesson selesai'})).toBeVisible();
  await page.getByText('Lihat pesan WhatsApp').click();await expect(page.getByText(/Halo Kak Rofi! Saya Peserta Uji/)).toBeVisible();
- await page.reload();await page.getByRole('button',{name:'Lanjut belajar',exact:true}).click();await expect(page.getByText('Slide 2 / 3',{exact:true})).toBeVisible();
+ await page.reload();await expect(page.getByText('Slide 2 / 3',{exact:true})).toBeVisible();
  await page.getByRole('button',{name:'Keluar',exact:true}).click();await page.getByRole('button',{name:'Masuk',exact:true}).click();await page.getByLabel('Email',{exact:true}).fill('uji@example.com');await page.getByLabel('Kata sandi').fill('incorrect-password');await page.getByRole('button',{name:'Masuk ke studio'}).click();await expect(page.getByRole('status')).toContainText('tidak cocok');await page.getByLabel('Kata sandi').fill('demopassword123');await page.getByRole('button',{name:'Masuk ke studio'}).click();await expect(page.getByRole('heading',{name:/Halo, Peserta Uji/})).toBeVisible();
  await page.getByRole('button',{name:'Keluar',exact:true}).click();await page.getByRole('button',{name:'Masuk',exact:true}).click();await page.getByRole('button',{name:'Coba peserta'}).click();await expect(page.getByRole('button',{name:'Mulai belajar',exact:true})).toBeVisible();
 });

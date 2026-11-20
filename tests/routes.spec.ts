@@ -1,0 +1,8 @@
+import {test,expect} from '@playwright/test';
+test('URLs, direct reload, back navigation and admin access',async({page})=>{
+ await page.goto('/materi');await expect(page).toHaveURL(/\/login$/);await page.getByRole('button',{name:'Coba peserta'}).click();await expect(page).toHaveURL(/\/materi$/);
+ await page.getByRole('button',{name:'Buka jalur BMC',exact:true}).click();await expect(page).toHaveURL(/\/jalur\/bmc$/);await page.reload();await expect(page.locator('.path-detail')).toContainText('Business Model Canvas');
+ await page.locator('.lesson-row').first().click();await expect(page).toHaveURL(/\/belajar\/BMC-1$/);await page.getByRole('button',{name:'Next',exact:true}).click();await expect(page.getByText('Slide 2 / 3',{exact:true})).toBeVisible();await page.reload();await expect(page.getByText('Slide 2 / 3',{exact:true})).toBeVisible();await page.goBack();await expect(page).toHaveURL(/\/jalur\/bmc$/);
+ await page.goto('/admin');await expect(page.getByRole('heading',{name:'Halaman khusus admin.'})).toBeVisible();await expect(page.locator('.admin-form')).toHaveCount(0);await page.goto('/akun');await expect(page.getByText('Peran akun:')).toContainText('Mahasiswa');await page.goto('/belajar/tidak-ada');await expect(page.getByRole('heading',{name:'Materi tidak ditemukan.'})).toBeVisible();
+ await page.getByRole('button',{name:'Keluar',exact:true}).click();await expect(page).toHaveURL(/\/$/);await page.goto('/admin');await page.getByRole('button',{name:'Coba admin',exact:true}).click();await expect(page).toHaveURL(/\/admin$/);await expect(page.locator('.admin-form')).toBeVisible();await page.reload();await expect(page.locator('.admin-form')).toBeVisible();
+});
